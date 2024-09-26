@@ -1,5 +1,5 @@
-function Sales() {
-  return <div>Admin Sales Page</div>;
-}
+const SalesPage = () => {
+  return <div>{/* Your sales page content here */}</div>;
+};
 
-export default Sales;
+export default SalesPage;
