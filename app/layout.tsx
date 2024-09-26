@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -19,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <Navbar />
-          <Container className="py-2">{children}</Container>
-        </Providers>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html suppressHydrationWarning lang="en">
+        <body className={inter.className}>
+          <Providers>
+            <Navbar />
+            <Container className="py-2">{children}</Container>
+          </Providers>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
