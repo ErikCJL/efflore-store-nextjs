@@ -4,17 +4,17 @@ type NavLink = {
 };
 
 export const links: NavLink[] = [
-  { href: "/", label: "home" },
-  { href: "/about", label: "about" },
-  { href: "/products", label: "products" },
-  { href: "/favorites", label: "favorites" },
-  { href: "/cart", label: "cart" },
-  { href: "/orders", label: "orders" },
-  { href: "/admin/sales", label: "dashboard" },
+  { href: "/", label: "Tela Incial" },
+  { href: "/about", label: "Sobre Nós" },
+  { href: "/products", label: "Produtos" },
+  { href: "/favorites", label: "Favoritos" },
+  { href: "/cart", label: "Carrinho" },
+  { href: "/orders", label: "Ordens" },
+  { href: "/admin/sales", label: "Controle" },
 ];
 
 export const adminLinks: NavLink[] = [
-  { href: "/admin/sales", label: "sales" },
-  { href: "/admin/products", label: "my products" },
-  { href: "/admin/products/create", label: "create product" },
+  { href: "/admin/sales", label: "Vendas" },
+  { href: "/admin/products", label: "Admin: Produtos" },
+  { href: "/admin/products/create", label: "Criar Produto" },
 ];
