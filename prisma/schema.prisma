@@ -27,6 +27,7 @@ model Product {
   image       String
   gender     String
   note     String
+  discount     Int
   preference     String
   price       Int
   createdAt    DateTime   @default(now())

@@ -5,15 +5,16 @@
     "featured": false,
     "name": "Spring Essence",
     "note": "Floral",
-    "intensity": "Mild",
-    "preference": "Day",
-    "gender": "Female",
+    "intensity": "Média",
+    "preference": "Dia",
+    "gender": "Feminino",
     "style": "Casual",
-    "season": "Spring",
-    "duration": "Medium",
+    "season": "Primavera",
+    "duration": "Média",
+    "discount": 0,
     "price": 90,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "description": "A floral and mild perfume, perfect for young people who want to enjoy the sunny spring days with a touch of casual freshness."
+    "description": "Esse é um perfume floral e médio, perfeito para pessoas jovens que querem gozar os dias suaves do verão com um toque de frescura casual."
   },
   {
     "clerkId": "15978ClerkMaster",
@@ -27,6 +28,7 @@
     "style": "Elegant",
     "season": "Winter",
     "duration": "Long",
+    "discount": 0,
     "price": 250,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "An intense oriental fragrance, ideal for elegant men who want to make an impression on cold winter nights with a touch of sophistication."
@@ -43,6 +45,7 @@
     "style": "Modern",
     "season": "Autumn",
     "duration": "Very Long",
+    "discount": 0,
     "price": 450,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "With a moderate woody note, this perfume is perfect for events and parties, adding a modern and enchanting touch to autumn nights."
@@ -59,6 +62,7 @@
     "style": "Sporty",
     "season": "Summer",
     "duration": "Short",
+    "discount": 0,
     "price": 600,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "A fresh and intense fragrance, ideal for active and sporty people who want to start the day with energy and freshness during the summer."
@@ -75,6 +79,7 @@
     "style": "Modern",
     "season": "Spring",
     "duration": "Medium",
+    "discount": 0,
     "price": 200,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "This moderately intense floral perfume is perfect for modern women who want an elegant and versatile fragrance for spring days."
@@ -91,6 +96,7 @@
     "style": "Elegant",
     "season": "Winter",
     "duration": "Very Long",
+    "discount": 0,
     "price": 400,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "With a mild oriental note, this perfume is ideal for elegant winter nights, offering a mysterious and sophisticated presence."
@@ -102,11 +108,12 @@
     "name": "Woody Shadow",
     "note": "Woody",
     "intensity": "Strong",
-    "preference": "Parties",
+    "preference": "Night",
     "gender": "Other",
     "style": "Casual",
     "season": "Autumn",
     "duration": "Long",
+    "discount": 0,
     "price": 80,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "A strong woody fragrance, perfect for young people who enjoy making an impression at parties, especially on autumn nights."
@@ -123,6 +130,7 @@
     "style": "Sporty",
     "season": "Summer",
     "duration": "Short",
+    "discount": 0,
     "price": 700,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "A fresh and moderate fragrance, ideal for active people who want a continuous feeling of freshness throughout the day, especially in summer."
@@ -139,6 +147,7 @@
     "style": "Modern",
     "season": "Spring",
     "duration": "Medium",
+    "discount": 0,
     "price": 220,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "With a very strong floral intensity, this perfume is perfect for modern women who want a striking and enchanting fragrance for spring days."
@@ -155,6 +164,7 @@
     "style": "Elegant",
     "season": "Winter",
     "duration": "Very Long",
+    "discount": 0,
     "price": 380,
     "image": "https://images.pexels.com/photos/4938265/pexels-photo-4938265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "description": "A moderate oriental fragrance, ideal for winter nights, offering an elegant and mysterious presence for sophisticated men."

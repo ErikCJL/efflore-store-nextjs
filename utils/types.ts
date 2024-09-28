@@ -22,3 +22,8 @@ export type CartState = {
   tax: number;
   orderTotal: number;
 };
+
+export type comboBoxOptions = {
+  value: string;
+  label: string;
+};

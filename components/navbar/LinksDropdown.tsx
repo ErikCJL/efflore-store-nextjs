@@ -32,7 +32,7 @@ function LinksDropdown() {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignUpButton mode="modal">
-              <button className="w-full text-left">Crie Sua Conta</button>
+              <button className="w-full text-left">Register</button>
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>
