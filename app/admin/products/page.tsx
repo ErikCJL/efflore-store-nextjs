@@ -1,9 +1,77 @@
-import { Table } from "@/components/ui/table";
+import EmptyList from "@/components/global/EmptyList";
+import { fetchAdminProducts } from "@/utils/actions";
+import Link from "next/link";
+
+import { formatCurrency } from "@/utils/format";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+import FormContainer from "@/components/form/FormContainer";
+import { IconButton } from "@/components/form/Buttons";
+import { deleteProductAction } from "@/utils/actions";
+
+function DeleteProduct({ productId }: { productId: string }) {
+  const deleteProduct = deleteProductAction.bind(null, { productId });
+  return (
+    <FormContainer action={deleteProduct}>
+      <IconButton actionType="delete" />
+    </FormContainer>
+  );
+}
 
 async function AdminProductsPage() {
+  const items = await fetchAdminProducts();
+  if (items.length === 0) return <EmptyList />;
   return (
     <section>
-      <Table></Table>
+      <Table>
+        <TableCaption className="capitalize">
+          total products : {items.length}
+        </TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Nome do Produto</TableHead>
+            <TableHead>Compania</TableHead>
+            <TableHead>Preço</TableHead>
+            <TableHead>Ações</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {items.map((item) => {
+            const { id: productId, name, company, price } = item;
+            return (
+              <TableRow key={productId}>
+                <TableCell>
+                  <Link
+                    href={`/products/${productId}`}
+                    className="underline text-muted-foreground tracking-wide capitalize"
+                  >
+                    {name}
+                  </Link>
+                </TableCell>
+                <TableCell>{company}</TableCell>
+                <TableCell>{formatCurrency(price)}</TableCell>
+
+                <TableCell className="flex items-center gap-x-2"></TableCell>
+
+                <TableCell className="flex items-center gap-x-2">
+                  <Link href={`/admin/products/${productId}/edit`}>
+                    <IconButton actionType="edit"></IconButton>
+                  </Link>
+                  <DeleteProduct productId={productId} />
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </section>
   );
 }

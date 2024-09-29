@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { currentUser } from "@clerk/nextjs/server";
-import { z, ZodSchema } from "zod";
+import { imageSchema, productSchema, validateWithZodSchema } from "./schemas";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { uploadImage } from "./supabase";
+import { uploadImage, deleteImage } from "./supabase";
 
 import db from "@/utils/db";
 
@@ -22,72 +24,20 @@ const getAuthUser = async () => {
   return user;
 };
 
-export async function validateWithZodSchema<T>(
-  schema: ZodSchema<T>,
-  data: unknown
-): Promise<T> {
-  const result = schema.safeParse(data);
-  if (!result.success) {
-    const errors = result.error.errors.map((error) => error.message);
-    throw new Error(errors.join(", "));
-  }
-  return result.data;
-}
+const getAdminUser = async () => {
+  const user = await getAuthUser();
+  if (user.id !== process.env.CLERK_ADMIN_USER_ID) redirect("/");
+  return user;
+};
 
-export async function productSchema() {
-  return z.object({
-    name: z
-      .string()
-      .min(4, {
-        message: "Nome deve ter pelo menos 4 caracteres.",
-      })
-      .max(100, {
-        message: "Nome deve ter no máximo 100 caracteres.",
-      }),
-    company: z.string(),
-    note: z.string(),
-    season: z.string(),
-    intensity: z.string(),
-    duration: z.string(),
-    featured: z.coerce.boolean(),
-    price: z.coerce.number().int().min(0, {
-      message: "Preço deve ser maior que 0",
-    }),
-    description: z.string().refine(
-      (description) => {
-        const wordCount = description.split(" ").length;
-        return wordCount >= 10 && wordCount <= 1000;
-      },
-      {
-        message: "Descrição deve ter entre 10 e 1000 palavras.",
-      }
-    ),
-    style: z.string(),
-    gender: z.string(),
-    discount: z.coerce.number().int().default(0),
-    preference: z.string(),
+export async function fetchAdminProducts() {
+  await getAdminUser();
+  const products = await db.product.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
   });
-}
-
-async function validateImageFile() {
-  const maxUploadSize = 1024 * 1024 * 5;
-  const acceptedFileTypes = ["image/"];
-  return z
-    .instanceof(File)
-    .refine((file) => {
-      return !file || file.size <= maxUploadSize;
-    }, `Arquivo deve ser menor que 5MB`)
-    .refine((file) => {
-      return (
-        !file || acceptedFileTypes.some((type) => file.type.startsWith(type))
-      );
-    }, "Arquivo precisa ser uma imagem");
-}
-
-export async function imageSchema() {
-  return z.object({
-    image: await validateImageFile(),
-  });
+  return products;
 }
 
 export async function fetchFeaturedProducts() {
@@ -126,21 +76,17 @@ export async function fetchSingleProduct(productId: string) {
 }
 
 export async function createProductAction(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  prevState: any,
+  __prevState: any,
   formData: FormData
 ): Promise<{ message: string }> {
   const user = await getAuthUser();
-  console.log(prevState);
+
   try {
     const rawData = Object.fromEntries(formData);
 
     const file = formData.get("image") as File;
-    const validatedFields = await validateWithZodSchema(
-      await productSchema(),
-      rawData
-    );
-    const validatedFile = await validateWithZodSchema(await imageSchema(), {
+    const validatedFields = validateWithZodSchema(productSchema, rawData);
+    const validatedFile = validateWithZodSchema(imageSchema, {
       image: file,
     });
     const fullPath = await uploadImage(validatedFile.image);
@@ -158,3 +104,84 @@ export async function createProductAction(
   }
   redirect("/admin/products");
 }
+
+export async function deleteProductAction(prevState: { productId: string }) {
+  const { productId } = prevState;
+  await getAdminUser();
+  try {
+    const product = await db.product.delete({
+      where: {
+        id: productId,
+      },
+    });
+    await deleteImage(product.image);
+    revalidatePath("/admin/products");
+    return { message: "product removed" };
+  } catch (error) {
+    return renderError(error);
+  }
+}
+
+export async function fetchAdminProductDetails(productId: string) {
+  await getAdminUser();
+  const product = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+  if (!product) redirect("/admin/products");
+  return product;
+}
+
+export async function updateProductAction(
+  __prevState: any,
+  formData: FormData
+) {
+  await getAdminUser();
+  try {
+    const productId = formData.get("id") as string;
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(productSchema, rawData);
+
+    await db.product.update({
+      where: {
+        id: productId,
+      },
+      data: {
+        ...validatedFields,
+      },
+    });
+    revalidatePath(`/admin/products/${productId}/edit`);
+    return { message: "Product updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+}
+
+export const updateProductImageAction = async (
+  __prevState: any,
+  formData: FormData
+) => {
+  await getAuthUser();
+  try {
+    const image = formData.get("image") as File;
+    const productId = formData.get("id") as string;
+    const oldImageUrl = formData.get("url") as string;
+
+    const validatedFile = validateWithZodSchema(imageSchema, { image });
+    const fullPath = await uploadImage(validatedFile.image);
+    await deleteImage(oldImageUrl);
+    await db.product.update({
+      where: {
+        id: productId,
+      },
+      data: {
+        image: fullPath,
+      },
+    });
+    revalidatePath(`/admin/products/${productId}/edit`);
+    return { message: "Product Image updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};

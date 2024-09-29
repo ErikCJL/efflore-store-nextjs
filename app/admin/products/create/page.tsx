@@ -46,31 +46,54 @@ function CreateProduct() {
 
             <DiscountInput />
 
-            <ComboBox name="gender" label="Gênero" options={genderOptions} />
-
-            <ComboBox name="style" label="Estilo" options={styleOptions} />
+            <ComboBox
+              defaultValue=""
+              name="gender"
+              label="Gênero"
+              options={genderOptions}
+            />
 
             <ComboBox
+              defaultValue=""
+              name="style"
+              label="Estilo"
+              options={styleOptions}
+            />
+
+            <ComboBox
+              defaultValue=""
               name="preference"
               label="Preferência"
               options={preferenceOptions}
             />
 
-            <ComboBox name="season" label="Estação" options={seasonOptions} />
+            <ComboBox
+              defaultValue=""
+              name="season"
+              label="Estação"
+              options={seasonOptions}
+            />
 
             <ComboBox
+              defaultValue=""
               name="intensity"
               label="Intensidade"
               options={intensityOptions}
             />
 
             <ComboBox
+              defaultValue=""
               name="duration"
               label="Duração"
               options={durationOptions}
             />
 
-            <ComboBox name="note" label="Nota" options={notesOptions} />
+            <ComboBox
+              defaultValue=""
+              name="note"
+              label="Nota"
+              options={notesOptions}
+            />
           </div>
 
           <TextAreaInput

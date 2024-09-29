@@ -1,112 +1,115 @@
 export const intensityOptions = [
-  { value: "Mild", label: "Intensidade: Médio" },
-  { value: "Moderate", label: "Intensidade: Moderado" },
-  { value: "Strong", label: "Intensidade: Forte" },
+  { value: "Médio", label: "Intensidade: Médio" },
+  { value: "Moderado", label: "Intensidade: Moderado" },
+  { value: "Forte", label: "Intensidade: Forte" },
 ];
 
 export const durationOptions = [
-  { value: "Very Long", label: "Duração: Muito Longo" },
-  { value: "Long", label: "Duração: Longo" },
-  { value: "Medium", label: "Duração: Médio" },
-  { value: "Short", label: "Duração: Curto" },
+  { value: "Muito Longo", label: "Duração: Muito Longo" },
+  { value: "Longo", label: "Duração: Longo" },
+  { value: "Médio", label: "Duração: Médio" },
+  { value: "Curto", label: "Duração: Curto" },
 ];
 
 export const styleOptions = [
   { value: "Casual", label: "Estilo: Casual" },
-  { value: "Elegant", label: "Estilo: Elegante" },
-  { value: "Modern", label: "Estilo: Moderno" },
-  { value: "Sporty", label: "Estilo: Esportivo" },
+  { value: "Elegante", label: "Estilo: Elegante" },
+  { value: "Moderno", label: "Estilo: Moderno" },
+  { value: "Esportivo", label: "Estilo: Esportivo" },
 ];
 
 export const seasonOptions = [
-  { value: "Spring", label: "Estação: Primavera" },
-  { value: "Summer", label: "Estação: Verão" },
-  { value: "Autumn", label: "Estação: Outono" },
-  { value: "Winter", label: "Estação: Inverno" },
+  { value: "Primavera", label: "Estação: Primavera" },
+  { value: "Verão", label: "Estação: Verão" },
+  { value: "Outono", label: "Estação: Outono" },
+  { value: "Inverno", label: "Estação: Inverno" },
 ];
 
 export const preferenceOptions = [
-  { value: "Day", label: "Preferência: Dia" },
-  { value: "Night", label: "Preferência: Noite" },
-  { value: "Parties", label: "Preferência: Festas" },
-  { value: "Anytime", label: "Preferência: Qualquer hora" },
+  { value: "Dia", label: "Preferência: Dia" },
+  { value: "Noite", label: "Preferência: Noite" },
+  { value: "Festas", label: "Preferência: Festas" },
+  { value: "Qualquer hora", label: "Preferência: Qualquer hora" },
 ];
 
 export const genderOptions = [
-  { value: "Male", label: "Gênero: Masculino" },
-  { value: "Female", label: "Gênero: Feminino" },
-  { value: "Unisex", label: "Gênero: Unissex" },
+  { value: "Masculino", label: "Gênero: Masculino" },
+  { value: "Feminino", label: "Gênero: Feminino" },
+  { value: "Unissex", label: "Gênero: Unissex" },
 ];
 
 export const notesOptions = [
   {
-    value: "Citrus",
+    value: "Cítricas",
     label:
       "Notas Cítricas: Limão, Laranja, Bergamota, Tangerina, Lima, Grapefruit",
   },
   {
-    value: "Aromatic",
+    value: "Aromáticas",
     label: "Notas Aromáticas: Lavanda, Alecrim, Manjericão, Hortelã",
   },
   {
-    value: "LightFruity",
+    value: "Frutais Leves",
     label: "Notas Frutais Leves: Maçã, Pêssego, Pera, Framboesa",
   },
   {
-    value: "LightSpicy",
+    value: "Especiarias Leves",
     label:
       "Notas Especiarias Leves: Gengibre, Pimenta Rosa, Cardamomo, Coentro",
   },
   {
-    value: "Green",
+    value: "Verdes",
     label: "Notas Verdes: Folhas de Violeta, Grama Cortada, Eucalipto",
   },
 
   {
-    value: "Floral",
+    value: "Florais",
     label:
       "Notas Florais: Rosa, Jasmim, Lírio-do-vale, Violeta, Gardênia, Flor de Laranjeira, Íris",
   },
   {
-    value: "Fruity",
+    value: "Frutais Intensos",
     label: "Notas Frutais Intensos: Pêssego, Ameixa, Damasco, Melão, Groselha",
   },
-  { value: "Spicy", label: "Notas Especiarias: Canela, Cravo, Noz-moscada" },
-  { value: "Herbal", label: "Notas Herbais: Sálvia, Chá, Tomilho" },
+  {
+    value: "Especiarias",
+    label: "Notas Especiarias: Canela, Cravo, Noz-moscada",
+  },
+  { value: "Herbais", label: "Notas Herbais: Sálvia, Chá, Tomilho" },
   { value: "Gourmand", label: "Notas Gourmand: Mel, Chocolate, Caramelo" },
 
   {
-    value: "Woody",
+    value: "Amadeiradas",
     label:
       "Notas Amadeiradas: Sândalo, Cedro, Vetiver, Patchouli, Agarwood (oud)",
   },
   {
-    value: "Resinous",
+    value: "Resinosas",
     label: "Notas Resinosas: Âmbar, Olíbano (frankincense), Mirra, Benjoim",
   },
   {
-    value: "Animalic",
+    value: "Animais",
     label: "Notas Animais: Almíscar, Civeta, Âmbar Cinzento",
   },
-  { value: "Vanilla", label: "Notas Gourmand: Baunilha, Fava Tonka, Cacau" },
+  { value: "Baunilha", label: "Notas Gourmand: Baunilha, Fava Tonka, Cacau" },
   {
-    value: "TobaccoLeather",
+    value: "Tabaco e Couro",
     label: "Notas de Tabaco e Couro: Tabaco, Notas de Couro",
   },
-  { value: "Moss", label: "Notas de Musgo: Musgo de Carvalho" },
+  { value: "Musgo", label: "Notas de Musgo: Musgo de Carvalho" },
 
   {
-    value: "Aquatic",
+    value: "Aquáticas",
     label: "Notas Aquáticas: Marinhas, Ozônicas, Água de Coco",
   },
   {
-    value: "Aldehydic",
+    value: "Aldeídicas",
     label: "Notas Aldeídicas: Aldeídos (frescos e metálicos)",
   },
-  { value: "Mineral", label: "Notas Minerais: Pedra, Areia, Notas Salinas" },
+  { value: "Minerais", label: "Notas Minerais: Pedra, Areia, Notas Salinas" },
   {
-    value: "TropicalFruity",
+    value: "Frutais Tropicais",
     label: "Notas Frutais Tropicais: Manga, Abacaxi, Maracujá, Lichia",
   },
-  { value: "Synthetic", label: "Notas Sintéticas: Iso E Super, Ambroxan" },
+  { value: "Sintéticas", label: "Notas Sintéticas: Iso E Super, Ambroxan" },
 ];

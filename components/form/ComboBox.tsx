@@ -24,13 +24,15 @@ function ComboBox({
   name,
   options,
   label,
+  defaultValue,
 }: {
   options: comboBoxOptions[];
   label: string;
   name: string;
+  defaultValue: string;
 }) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(defaultValue || "");
 
   return (
     <div className="mb-4, w-fit">
@@ -77,7 +79,13 @@ function ComboBox({
           </Command>
         </PopoverContent>
       </Popover>
-      <input type="hidden" name={name} required value={value} />
+      <input
+        type="hidden"
+        defaultValue={defaultValue}
+        name={name}
+        required
+        value={value}
+      />
     </div>
   );
 }

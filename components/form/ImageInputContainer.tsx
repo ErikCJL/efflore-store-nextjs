@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import FormContainer from "./FormContainer";
 import ImageInput from "./ImageInput";
 import { SubmitButton } from "./Buttons";
-import { type actionFunction } from "../../utils/types";
+import { type actionFunction } from "@/utils/types";
 
 type ImageInputContainerProps = {
   image: string;
@@ -18,16 +18,17 @@ type ImageInputContainerProps = {
 function ImageInputContainer(props: ImageInputContainerProps) {
   const { image, name, action, text } = props;
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false);
+
   return (
     <div className="mb-8">
       <Image
         src={image}
         width={200}
         height={200}
-        className="rounded object-cover mb-4 w-[200px] h-[200px]"
+        className="rounded-md object-cover mb-4 w-[200px] h-[200px]"
         alt={name}
-        priority
       />
+
       <Button
         variant="outline"
         size="sm"
