@@ -91,8 +91,8 @@ const PerfumeQuiz: React.FC = () => {
           Ainda na dúvida? Faça nosso Questionário!
         </h1>
       </div>
-      <Card className="rounded-2xl shadow-md w-2/5 mx-auto">
-        <CardContent className="p-8 bg-gradient-to-br from-purple-50 to-purple-100 h-fit rounded-2xl shadow-md text-center">
+      <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
+        <CardContent className="p-8 h-fit rounded-2xl shadow-md text-center">
           <h2 className="text-2xl font-semibold text-purple-900 mb-6  text-center">
             {quizData[currentQuestion]?.pergunta}
           </h2>

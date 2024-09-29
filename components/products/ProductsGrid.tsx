@@ -9,15 +9,16 @@ function ProductsGrid({ products }: { products: Product[] }) {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => {
-        const { name, price, image } = product;
+        const { name, price, image, discount, company } = product;
+        const discountedValue = price - (price * discount) / 100;
         const productId = product.id;
-        const reaisAmount = formatCurrency(price);
+
         return (
           <article key={productId} className="group relative">
             <Link href={`/products/${productId}`}>
               <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
                 <CardContent className="p-4">
-                  <div className="relative h-64 md:h-48 rounded overflow-hidden ">
+                  <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
                     <Image
                       src={image}
                       alt={name}
@@ -26,15 +27,38 @@ function ProductsGrid({ products }: { products: Product[] }) {
                       priority
                       className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
+                    <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
+                      {discount}% Desconto
+                    </span>
                   </div>
-                  <div className="mt-4 text-center">
-                    <h2 className="text-lg  capitalize">{name}</h2>
-                    <p className="text-muted-foreground  mt-2">{reaisAmount}</p>
+                  <div className="mt-4 px-5 pb-5">
+                    <div>
+                      <h5 className="text-xl tracking-tight text-slate-900">
+                        {company} - {name}
+                      </h5>
+                    </div>
+                    <div className="mt-2  flex items-center justify-between">
+                      <p>
+                        <span className="text-3xl font-bold text-slate-900">
+                          {formatCurrency(discountedValue)}
+                        </span>
+                        <span className="text-sm text-slate-900 line-through">
+                          {formatCurrency(price)}
+                        </span>
+                      </p>
+                      <div className="flex items-center">
+                        <p>
+                          <span className="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
+                            5.0
+                          </span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             </Link>
-            <div className="absolute top-7 right-7 z-5">
+            <div className="absolute top-9 right-9 z-5">
               <FavoriteToggleButton productId={productId} />
             </div>
           </article>

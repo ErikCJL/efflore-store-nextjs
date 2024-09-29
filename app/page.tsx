@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import LoadingContainer from "@/components/global/LoadingContainer";
 import { Suspense } from "react";
 import QuizComponent from "@/components/quiz/QuizComponent";
+import Footer from "@/components/footer/Footer";
 function HomePage() {
   return (
     <>
@@ -11,6 +12,7 @@ function HomePage() {
         <FeaturedProducts />
       </Suspense>
       <QuizComponent />
+      <Footer />
     </>
   );
 }
