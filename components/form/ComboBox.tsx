@@ -21,17 +21,19 @@ import {
 import { comboBoxOptions } from "@/utils/types";
 
 function ComboBox({
+  name,
   options,
   label,
 }: {
   options: comboBoxOptions[];
   label: string;
+  name: string;
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
   return (
-    <div className="mb-4">
+    <div className="mb-4, w-fit">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -75,6 +77,7 @@ function ComboBox({
           </Command>
         </PopoverContent>
       </Popover>
+      <input type="hidden" name={name} required value={value} />
     </div>
   );
 }

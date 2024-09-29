@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,12 +9,15 @@ import {
 import { LuAlignLeft } from "react-icons/lu";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { links } from "@/utils/links";
+import { links, loggedLinks, adminLinks } from "@/utils/links";
 import UserIcon from "./UserIcon";
 import SignOutLink from "./SignOutLink";
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 function LinksDropdown() {
+  const { userId } = auth();
+  const isAdmin = userId === process.env.CLERK_ADMIN_USER_ID;
+  console.log("isAdmin", isAdmin);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -36,8 +40,21 @@ function LinksDropdown() {
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>
+
+        {links.map((link) => {
+          return (
+            <DropdownMenuItem key={link.href}>
+              <Link href={link.href} className="capitalize w-full">
+                {link.label}
+              </Link>
+            </DropdownMenuItem>
+          );
+        })}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem></DropdownMenuItem>
+
         <SignedIn>
-          {links.map((link) => {
+          {loggedLinks.map((link) => {
             return (
               <DropdownMenuItem key={link.href}>
                 <Link href={link.href} className="capitalize w-full">
@@ -47,10 +64,28 @@ function LinksDropdown() {
             );
           })}
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <SignOutLink />
-          </DropdownMenuItem>
         </SignedIn>
+
+        {isAdmin && (
+          <SignedIn>
+            {adminLinks.map((link) => {
+              return (
+                <div key={link.href} className="bg-red-300">
+                  <DropdownMenuItem>
+                    <Link href={link.href} className="capitalize w-full">
+                      {link.label}
+                    </Link>
+                  </DropdownMenuItem>
+                </div>
+              );
+            })}
+          </SignedIn>
+        )}
+
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <SignOutLink />
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

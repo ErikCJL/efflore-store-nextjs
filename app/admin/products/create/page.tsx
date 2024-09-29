@@ -5,12 +5,15 @@ import FormContainer from "@/components/form/FormContainer";
 import { createProductAction } from "@/utils/actions";
 import ImageInput from "@/components/form/ImageInput";
 import PriceInput from "@/components/form/PriceInput";
+import DiscountInput from "@/components/form/DiscountInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { faker } from "@faker-js/faker";
 import CheckboxInput from "@/components/form/CheckboxInput";
 import {
+  genderOptions,
   styleOptions,
   seasonOptions,
+  preferenceOptions,
   durationOptions,
   intensityOptions,
   notesOptions,
@@ -22,7 +25,7 @@ function CreateProduct() {
 
   return (
     <section>
-      <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
+      <h1 className="text-2xl font-semibold mb-8 capitalize">Criar Produto</h1>
       <div className="border p-8 rounded-md">
         <FormContainer action={createProductAction}>
           <div className="grid gap-4 md:grid-cols-2 my-4">
@@ -39,23 +42,35 @@ function CreateProduct() {
               defaultValue={""}
             />
 
-            <FormInput type="text" name="note" label="Nota" defaultValue={""} />
-
             <PriceInput />
 
-            <section className="w-full flex flex-wrap justify-between space-x-4 md:flex-nowrap">
-              <ComboBox label="Nota" options={notesOptions} />
-            </section>
-            <div className="w-full mb-4"></div>
+            <DiscountInput />
 
-            <section className="w-full flex flex-wrap justify-between  md:flex-nowrap">
-              <ComboBox label="Estilo" options={styleOptions} />
-              <ComboBox label="Estação" options={seasonOptions} />
-              <ComboBox label="Intensidade" options={intensityOptions} />
-              <ComboBox label="Duração" options={durationOptions} />
-            </section>
+            <ComboBox name="gender" label="Gênero" options={genderOptions} />
 
-            <section className="w-full flex flex-wrap justify-between space-x-4 md:flex-nowrap"></section>
+            <ComboBox name="style" label="Estilo" options={styleOptions} />
+
+            <ComboBox
+              name="preference"
+              label="Preferência"
+              options={preferenceOptions}
+            />
+
+            <ComboBox name="season" label="Estação" options={seasonOptions} />
+
+            <ComboBox
+              name="intensity"
+              label="Intensidade"
+              options={intensityOptions}
+            />
+
+            <ComboBox
+              name="duration"
+              label="Duração"
+              options={durationOptions}
+            />
+
+            <ComboBox name="note" label="Nota" options={notesOptions} />
           </div>
 
           <TextAreaInput

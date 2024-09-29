@@ -13,11 +13,10 @@ export const loggedLinks: NavLink[] = [
   { href: "/favorites", label: "Favoritos" },
   { href: "/cart", label: "Carrinho" },
   { href: "/orders", label: "Ordens" },
-  { href: "/admin/sales", label: "Controle" },
 ];
 
 export const adminLinks: NavLink[] = [
-  { href: "/admin/sales", label: "Vendas" },
+  { href: "/admin/sales", label: "Controle" },
   { href: "/admin/products", label: "Produtos" },
   { href: "/admin/products/create", label: "Criar Produto" },
 ];
