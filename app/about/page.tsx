@@ -1,3 +1,6 @@
+import team from "@/public/images/time.jpg";
+import Image from "next/image";
+
 function AboutPage() {
   return (
     <section>
@@ -7,6 +10,7 @@ function AboutPage() {
           Perfumes
         </span>
       </h1>
+
       <p className="mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground">
         A Effloré foi criada através do esforço de Elias de Souza e Diana
         Batista de Souza, dois irmãos formados respectivamente em Química e
@@ -24,6 +28,15 @@ function AboutPage() {
       <p className="mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground">
         <strong>Telefone:</strong> (16) 99152-0515
       </p>
+
+      <div className="flex items-center justify-center ">
+        <Image
+          src={team}
+          alt={"Nosso time."}
+          priority
+          className="rounded w-96 transform mt-6 group-hover:scale-110 transition-transform duration-500"
+        />
+      </div>
     </section>
   );
 }
