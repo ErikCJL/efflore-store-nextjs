@@ -17,7 +17,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
           <article key={productId} className="group relative">
             <Link href={`/products/${productId}`}>
               <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
-                <CardContent className="p-4">
+                <CardContent className="p-4 ">
                   <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
                     <Image
                       src={image}
@@ -33,22 +33,22 @@ function ProductsGrid({ products }: { products: Product[] }) {
                   </div>
                   <div className="mt-4 px-5 pb-5">
                     <div>
-                      <h5 className="text-xl tracking-tight text-slate-900">
+                      <h5 className="text-xl tracking-tight">
                         {company} - {name}
                       </h5>
                     </div>
                     <div className="mt-2  flex items-center justify-between">
                       <p>
-                        <span className="text-3xl font-bold text-slate-900">
+                        <span className="text-3xl font-bold">
                           {formatCurrency(discountedValue)}
                         </span>
-                        <span className="text-sm text-slate-900 line-through">
+                        <span className="text-sm line-through">
                           {formatCurrency(price)}
                         </span>
                       </p>
                       <div className="flex items-center">
                         <p>
-                          <span className="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
+                          <span className="mr-2 ml-3 rounded bg-rose-500 px-2.5 py-0.5 text-xs font-semibold">
                             5.0
                           </span>
                         </p>
