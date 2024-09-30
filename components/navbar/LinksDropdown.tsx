@@ -17,7 +17,7 @@ import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
 function LinksDropdown() {
   const { userId } = auth();
   const isAdmin = userId === process.env.CLERK_ADMIN_USER_ID;
-  console.log("isAdmin", isAdmin);
+  console.log("isAdmin", { isAdmin, userId });
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -70,7 +70,7 @@ function LinksDropdown() {
           <SignedIn>
             {adminLinks.map((link) => {
               return (
-                <div key={link.href} className="bg-red-300">
+                <div key={link.href}>
                   <DropdownMenuItem>
                     <Link href={link.href} className="capitalize w-full">
                       {link.label}
